@@ -111,32 +111,45 @@ header {
     background-color: #a00d24;
 }
 
-.category-tabs {
+.category-select-wrapper {
     display: flex;
-    gap: 15px;
-    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
     margin-bottom: 20px;
 }
 
-.category-tab {
-    padding: 8px 20px;
+.category-select-wrapper label {
+    font-size: 16px;
+    color: #333;
+    font-weight: 500;
+}
+
+.category-select {
+    flex: 1;
+    max-width: 300px;
+    padding: 10px 15px;
+    font-size: 15px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
     background-color: white;
-    border: 1px solid #ddd;
-    border-radius: 20px;
+    color: #333;
     cursor: pointer;
-    transition: all 0.3s ease;
-    user-select: none;
+    transition: border-color 0.3s ease;
+    outline: none;
 }
 
-.category-tab.active {
-    background-color: #c8102e;
-    color: white;
+.category-select:hover {
     border-color: #c8102e;
 }
 
-.category-tab:hover:not(.active) {
+.category-select:focus {
     border-color: #c8102e;
-    color: #c8102e;
+    box-shadow: 0 0 0 3px rgba(200, 16, 46, 0.1);
+}
+
+.category-select option {
+    padding: 10px;
+    font-size: 15px;
 }
 
 .product-section {
@@ -583,20 +596,20 @@ footer {
         width: 100%;
     }
 
-    .category-tabs {
-        justify-content: flex-start;
-        gap: 10px;
-        overflow-x: auto;
-        flex-wrap: nowrap;
-        padding-bottom: 5px;
-        -webkit-overflow-scrolling: touch;
+    .category-select-wrapper {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 8px;
     }
 
-    .category-tab {
-        padding: 6px 15px;
+    .category-select-wrapper label {
         font-size: 14px;
-        white-space: nowrap;
-        flex-shrink: 0;
+    }
+
+    .category-select {
+        max-width: 100%;
+        padding: 12px;
+        font-size: 16px;
     }
 
     .product-section {
