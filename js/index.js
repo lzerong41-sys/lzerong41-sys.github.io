@@ -150,20 +150,16 @@ function updateQuoteBar() {
 }
 
 function bindCategoryEvent() {
-    const categoryTabs = document.querySelectorAll('.category-tab');
+    const categorySelect = document.getElementById('categorySelect');
 
-    categoryTabs.forEach(tab => {
-        tab.addEventListener('click', () => {
-            categoryTabs.forEach(t => t.classList.remove('active'));
-            tab.classList.add('active');
-            activeCategory = tab.innerText;
+    categorySelect.addEventListener('change', () => {
+        activeCategory = categorySelect.value;
 
-            const filteredList = activeCategory === "全部商品"
-                ? productList
-                : productList.filter(product => product.category === activeCategory);
+        const filteredList = activeCategory === "全部商品"
+            ? productList
+            : productList.filter(product => product.category === activeCategory);
 
-            renderProduct(filteredList);
-        });
+        renderProduct(filteredList);
     });
 }
 
