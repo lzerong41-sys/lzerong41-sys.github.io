@@ -49,7 +49,7 @@ const productList = [
         category: "挂件专区",
         retailPrice: 12.00,
         wholesalePrice: 8.00,
-        imgUrl: "./images/40#喜字挂件.jpg"
+        imgUrl: "./images/40公分喜字挂件.jpg"
     },
     {
         id: 7,
@@ -57,7 +57,7 @@ const productList = [
         category: "挂件专区",
         retailPrice: 12.00,
         wholesalePrice: 8.00,
-        imgUrl: "./images/40#暖居如意挂件.jpg"
+        imgUrl: "./images/40公分暖居如意挂件.jpg"
     },
     {
         id: 8,
@@ -65,7 +65,7 @@ const productList = [
         category: "挂件专区",
         retailPrice: 12.00,
         wholesalePrice: 8.00,
-        imgUrl: "./images/40#福字挂件.jpg"
+        imgUrl: "./images/40公分福字挂件.jpg"
     },
     {
         id: 9,
