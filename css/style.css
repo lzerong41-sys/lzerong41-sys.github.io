@@ -1,0 +1,599 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Microsoft YaHei", sans-serif;
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    background-color: #f8f8f8;
+    color: #333;
+    line-height: 1.5;
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    background-color: #c8102e;
+    color: white;
+    padding: 15px 0;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 999;
+}
+
+.header-container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.shop-name {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+}
+
+.nav-menu li {
+    margin-left: 30px;
+}
+
+.nav-menu a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    transition: color 0.3s ease;
+}
+
+.nav-menu a:hover {
+    color: #ffd700;
+}
+
+.category-section {
+    width: 90%;
+    max-width: 1200px;
+    margin: 30px auto;
+}
+
+.category-title {
+    font-size: 20px;
+    margin-bottom: 20px;
+    color: #c8102e;
+    border-left: 5px solid #c8102e;
+    padding-left: 10px;
+}
+
+.search-bar {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.search-bar input {
+    flex: 1;
+    padding: 10px 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+.search-bar input:focus {
+    border-color: #c8102e;
+}
+
+.search-bar button {
+    padding: 10px 25px;
+    background-color: #c8102e;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s;
+}
+
+.search-bar button:hover {
+    background-color: #a00d24;
+}
+
+.category-tabs {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+.category-tab {
+    padding: 8px 20px;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    user-select: none;
+}
+
+.category-tab.active {
+    background-color: #c8102e;
+    color: white;
+    border-color: #c8102e;
+}
+
+.category-tab:hover:not(.active) {
+    border-color: #c8102e;
+    color: #c8102e;
+}
+
+.product-section {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto 50px;
+    flex: 1;
+}
+
+.product-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+}
+
+.product-card {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    overflow: hidden;
+    transition: transform 0.3s ease;
+    position: relative;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+}
+
+.product-card.selected {
+    border: 2px solid #c8102e;
+    box-shadow: 0 4px 15px rgba(200, 16, 46, 0.3);
+}
+
+.product-select {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    z-index: 10;
+}
+
+.product-img {
+    width: 100%;
+    height: 200px;
+    background: center/cover no-repeat;
+    background-color: #f0f0f0;
+}
+
+.product-img.error {
+    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 200"><rect fill="%23f0f0f0" width="400" height="200"/><text x="50%" y="50%" text-anchor="middle" fill="%23999" font-size="16">图片加载失败</text></svg>');
+}
+
+.product-info {
+    padding: 15px;
+}
+
+.product-name {
+    font-size: 18px;
+    margin-bottom: 10px;
+    font-weight: 600;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.product-price {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.retail-price {
+    color: #c8102e;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.wholesale-price {
+    color: #666;
+    font-size: 14px;
+}
+
+.wholesale-price.locked {
+    color: #999;
+    cursor: pointer;
+}
+
+.wholesale-price.locked:hover {
+    color: #c8102e;
+}
+
+.product-quantity {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px solid #eee;
+}
+
+.product-quantity label {
+    font-size: 14px;
+    color: #666;
+}
+
+.product-quantity input {
+    width: 80px;
+    padding: 8px 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 14px;
+}
+
+.product-quantity input:focus {
+    border-color: #c8102e;
+    outline: none;
+}
+
+.quote-float-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: white;
+    box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 998;
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+}
+
+.quote-float-bar.show {
+    transform: translateY(0);
+}
+
+.quote-info {
+    display: flex;
+    gap: 30px;
+    font-size: 16px;
+}
+
+.quote-info strong {
+    color: #c8102e;
+}
+
+.quote-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.btn-clear {
+    padding: 10px 20px;
+    background-color: #f5f5f5;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.3s;
+}
+
+.btn-clear:hover {
+    background-color: #e0e0e0;
+}
+
+.btn-export {
+    padding: 10px 25px;
+    background-color: #c8102e;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s;
+}
+
+.btn-export:hover {
+    background-color: #a00d24;
+}
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.5);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-overlay.show {
+    display: flex;
+}
+
+.modal-content {
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+    max-width: 400px;
+    width: 90%;
+    text-align: center;
+}
+
+.modal-content h3 {
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.modal-content p {
+    margin-bottom: 15px;
+    color: #666;
+}
+
+.modal-content input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+    margin-bottom: 15px;
+}
+
+.modal-content input:focus {
+    border-color: #c8102e;
+    outline: none;
+}
+
+.modal-buttons {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+.modal-buttons button {
+    padding: 10px 25px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.3s;
+}
+
+.modal-buttons button:first-child {
+    background-color: #c8102e;
+    color: white;
+}
+
+.modal-buttons button:first-child:hover {
+    background-color: #a00d24;
+}
+
+.modal-buttons button:last-child {
+    background-color: #f5f5f5;
+    color: #333;
+}
+
+.modal-buttons button:last-child:hover {
+    background-color: #e0e0e0;
+}
+
+.password-hint {
+    font-size: 12px;
+    color: #999;
+    margin-top: 10px;
+}
+
+.quote-modal-content {
+    max-width: 800px;
+    max-height: 80vh;
+    overflow-y: auto;
+}
+
+.quote-preview {
+    text-align: left;
+    margin: 20px 0;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+}
+
+.quote-preview table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.quote-preview th,
+.quote-preview td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: center;
+}
+
+.quote-preview th {
+    background-color: #c8102e;
+    color: white;
+}
+
+.quote-preview .total-row {
+    font-weight: bold;
+    background-color: #fff5f5;
+}
+
+.info-modal-content {
+    max-width: 500px;
+    text-align: left;
+}
+
+.info-content {
+    padding: 15px 0;
+    line-height: 1.8;
+    color: #333;
+}
+
+.info-content ul {
+    list-style: none;
+    padding-left: 20px;
+}
+
+.info-content li {
+    margin: 8px 0;
+}
+
+.contact-info-detail {
+    padding: 20px;
+}
+
+.contact-item {
+    display: flex;
+    margin: 15px 0;
+    align-items: center;
+}
+
+.contact-label {
+    font-weight: bold;
+    color: #c8102e;
+    min-width: 100px;
+}
+
+.contact-value {
+    color: #333;
+    font-size: 16px;
+}
+
+.contact-tip {
+    text-align: center;
+    color: #c8102e;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+.quote-header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.quote-header h2 {
+    color: #c8102e;
+    margin-bottom: 10px;
+}
+
+.quote-header p {
+    color: #666;
+    font-size: 14px;
+}
+
+footer {
+    background-color: #333;
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+    font-size: 14px;
+    margin-top: auto;
+    flex-shrink: 0;
+}
+
+.contact-info {
+    margin-bottom: 10px;
+}
+
+@media (max-width: 768px) {
+    .header-container {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .nav-menu {
+        margin-top: 10px;
+    }
+
+    .nav-menu li {
+        margin: 0 15px;
+    }
+
+    .category-tabs {
+        justify-content: center;
+    }
+
+    .quote-float-bar {
+        flex-direction: column;
+        gap: 15px;
+        padding: 15px;
+    }
+
+    .quote-info {
+        gap: 20px;
+        font-size: 14px;
+    }
+
+    .quote-actions {
+        width: 100%;
+    }
+
+    .quote-actions button {
+        flex: 1;
+    }
+
+    .quote-modal-content {
+        max-width: 95%;
+        padding: 20px;
+    }
+
+    .quote-preview table {
+        font-size: 12px;
+    }
+
+    .quote-preview th,
+    .quote-preview td {
+        padding: 8px 5px;
+    }
+}
+
+@media print {
+    header, footer, .category-section, .quote-float-bar, .modal-buttons {
+        display: none !important;
+    }
+
+    body {
+        padding: 0;
+    }
+
+    .quote-preview {
+        padding: 0;
+        background: white;
+    }
+
+    .quote-preview th {
+        background-color: #c8102e !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+}

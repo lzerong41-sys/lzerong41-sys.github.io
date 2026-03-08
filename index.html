@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="荣明达商行节日用品报价系统，提供春联、灯笼、福字、红包等节日商品批发零售报价">
+    <meta name="keywords" content="荣明达商行,节日用品,春联,灯笼,福字,红包,批发报价">
+    <title>荣明达商行 - 节日用品报价系统</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+<header>
+    <div class="header-container">
+        <div class="shop-name">荣明达商行</div>
+        <ul class="nav-menu">
+            <li><a href="#" class="active">首页</a></li>
+            <li><a href="#" id="aboutLink">关于我们</a></li>
+            <li><a href="#" id="contactLink">联系方式</a></li>
+        </ul>
+    </div>
+</header>
+
+<section class="category-section">
+    <h2 class="category-title">商品分类</h2>
+    <div class="search-bar">
+        <input type="text" id="searchInput" placeholder="搜索商品名称...">
+        <button id="searchBtn">搜索</button>
+    </div>
+    <div class="category-tabs">
+        <div class="category-tab active">全部商品</div>
+        <div class="category-tab">春联专区</div>
+        <div class="category-tab">灯笼专区</div>
+        <div class="category-tab">福字专区</div>
+        <div class="category-tab">红包专区</div>
+    </div>
+</section>
+
+<section class="product-section">
+    <div class="product-list" id="productList"></div>
+</section>
+
+<div class="quote-float-bar" id="quoteFloatBar">
+    <div class="quote-info">
+        <span>已选 <strong id="selectedCount">0</strong> 件商品</span>
+        <span>合计：<strong id="totalAmount">¥0.00</strong></span>
+    </div>
+    <div class="quote-actions">
+        <button class="btn-clear" id="clearQuoteBtn">清空</button>
+        <button class="btn-export" id="exportQuoteBtn">导出报价单</button>
+    </div>
+</div>
+
+<div class="modal-overlay" id="passwordModal">
+    <div class="modal-content">
+        <h3>批发价查看权限验证</h3>
+        <p>请输入密码查看批发价格</p>
+        <input type="password" id="passwordInput" placeholder="请输入密码">
+        <div class="modal-buttons">
+            <button id="passwordSubmit">确认</button>
+            <button id="passwordCancel">取消</button>
+        </div>
+        <p class="password-hint">提示：默认密码为 123456</p>
+    </div>
+</div>
+
+<div class="modal-overlay" id="quoteModal">
+    <div class="modal-content quote-modal-content">
+        <h3>报价单预览</h3>
+        <div class="quote-preview" id="quotePreview"></div>
+        <div class="modal-buttons">
+            <button id="exportExcelBtn">导出Excel</button>
+            <button id="printQuoteBtn">打印报价单</button>
+            <button id="closeQuoteModal">关闭</button>
+        </div>
+    </div>
+</div>
+
+<div class="modal-overlay" id="aboutModal">
+    <div class="modal-content info-modal-content">
+        <h3>关于我们</h3>
+        <div class="info-content">
+            <p><strong>荣明达商行</strong>是一家专注于节日用品批发零售的专业商行，位于海口市博爱南路，深耕节日用品行业多年。</p>
+            <br>
+            <p>我们主要经营：</p>
+            <ul>
+                <li>🧧 春联、福字、窗花等春节装饰</li>
+                <li>🏮 各类红灯笼、彩灯装饰</li>
+                <li>🎁 创意红包、利是封</li>
+                <li>🎊 中国结、挂饰等节庆用品</li>
+            </ul>
+            <br>
+            <p>商行秉承"诚信经营、品质至上"的理念，为广大客户提供优质的节日用品和贴心的服务。无论是个人采购还是批发进货，我们都将以最优惠的价格、最优质的产品回馈每一位客户。</p>
+            <br>
+            <p>欢迎新老客户前来选购！</p>
+        </div>
+        <div class="modal-buttons">
+            <button id="closeAboutModal">关闭</button>
+        </div>
+    </div>
+</div>
+
+<div class="modal-overlay" id="contactModal">
+    <div class="modal-content info-modal-content">
+        <h3>联系方式</h3>
+        <div class="info-content contact-info-detail">
+            <div class="contact-item">
+                <span class="contact-label">📞 联系电话：</span>
+                <span class="contact-value">138XXXX1234</span>
+            </div>
+            <div class="contact-item">
+                <span class="contact-label">📱 微信：</span>
+                <span class="contact-value">rmdshanghang</span>
+            </div>
+            <div class="contact-item">
+                <span class="contact-label">📍 店铺地址：</span>
+                <span class="contact-value">海口市博爱南路XX号</span>
+            </div>
+            <div class="contact-item">
+                <span class="contact-label">🕐 营业时间：</span>
+                <span class="contact-value">周一至周日 08:00 - 20:00</span>
+            </div>
+            <br>
+            <p class="contact-tip">欢迎来电咨询或到店选购，量大从优！</p>
+        </div>
+        <div class="modal-buttons">
+            <button id="closeContactModal">关闭</button>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <div class="contact-info">联系电话：138XXXX1234 | 地址：海口市博爱南路XX号</div>
+    <div class="copyright">© 2026 荣明达商行 版权所有</div>
+</footer>
+
+<script src="./js/productData.js"></script>
+<script src="./js/index.js"></script>
+</body>
+</html>
