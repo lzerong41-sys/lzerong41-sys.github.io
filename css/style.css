@@ -166,6 +166,32 @@ header {
     justify-items: center;
 }
 
+.empty-state {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 60px 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    margin: 20px 0;
+}
+
+.empty-icon {
+    font-size: 48px;
+    margin-bottom: 15px;
+}
+
+.empty-title {
+    font-size: 18px;
+    color: #666;
+    margin-bottom: 10px;
+    font-weight: 500;
+}
+
+.empty-tip {
+    font-size: 14px;
+    color: #999;
+}
+
 .product-card {
     background-color: white;
     border-radius: 8px;
