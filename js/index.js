@@ -31,7 +31,17 @@ function renderProduct(list) {
     productListDom.innerHTML = "";
 
     if (list.length === 0) {
-        productListDom.innerHTML = '<div style="text-align:center;padding:50px;color:#999;">暂无匹配的商品</div>';
+        const emptyMessage = activeCategory === "全部商品" 
+            ? '暂无商品数据，请添加商品或稍后查看'
+            : `【${activeCategory}】暂无商品，该分类商品正在补充中，敬请期待！`;
+        
+        productListDom.innerHTML = `
+            <div class="empty-state">
+                <div class="empty-icon">📦</div>
+                <div class="empty-title">${emptyMessage}</div>
+                <div class="empty-tip">您可以切换其他分类查看，或使用搜索功能查找商品</div>
+            </div>
+        `;
         return;
     }
 
